@@ -12,9 +12,6 @@ var robot = require('../lib/robot.js');
 //mongo
 mongo.connect('mongodb://nirgendwo.ddns.net/cotacaodolar');
 
-
-
-
 robot.start();
 
 /**
