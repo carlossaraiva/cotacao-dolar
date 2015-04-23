@@ -3,18 +3,27 @@ var router = express.Router();
 var Cotacao = require('../models/cotacao.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+
+    res.render('index', {
+        title: 'Express'
+    });
+    console.log(req + " " + res + " " + next);
 });
 
-router.get('/json', function(req, res, next){
-	Cotacao.find(function(err, cotacaos){
-		if(!err){
-			res.send(cotacaos);
-		}else{
-			res.send("Not found");
-		}
-	});
+router.get('/json', function (req, res, next) {
+    "use strict";
+    Cotacao.find(function (err, query) {
+        if (!err) {
+            res.json(query);
+        } else {
+            res.json({
+                "error": "Not found",
+                "header": req,
+                "next": next
+            });
+        }
+    });
 });
 
 module.exports = router;
