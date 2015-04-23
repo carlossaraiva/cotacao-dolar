@@ -7,7 +7,7 @@ var app = require('../app');
 var debug = require('debug')('cotacao-dolar:server');
 var http = require('http');
 var mongo = require('mongoose');
-var robot = require('robot.js');
+var robot = require('./robot.js');
 //mongo
 mongo.connect('mongodb://nirgendwo.ddns.net/cotacaodolar');
 
