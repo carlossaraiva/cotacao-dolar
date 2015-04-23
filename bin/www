@@ -7,41 +7,15 @@
 var app = require('../app');
 var debug = require('debug')('cotacao-dolar:server');
 var http = require('http');
-var request = require('request');
-var cheerio = require('cheerio');
-var cron = require('node-crontab');
-
-//mongo
 var mongo = require('mongoose');
-var Schema = mongo.Schema;
-
-var CotacaoSchema = new Schema({
-  dolar: String,
-  date: Date
-});
-
-mongo.model('Cotacao', CotacaoSchema);
+var robot = require('../lib/robot.js');
+//mongo
 mongo.connect('mongodb://nirgendwo.ddns.net/cotacaodolar');
-var Cotacao = mongo.model('Cotacao');
-/**cheerio test
- */
-var url = "http://www.valor.com.br/valor-data";
-var job = cron.scheduleJob('00 00 00 * * *', function(){
-  request(url, robot);
-});
 
-var robot = function(error, response, html) {
-  if (!error) {
-    var $ = cheerio.load(html);
 
-    var cotacao = new Cotacao();
-    cotacao.dolar = $('.number').html();
-    cotacao.date = new Date();
-    cotacao.save(function(){
-      console.log('Cotação atualizado: Dolar: ' + cotacao.dolar + ', Data: ' + cotacao.date);
-    });
-  }
-}
+
+
+robot.start();
 
 /**
  * Get port from environment and store in Express.
