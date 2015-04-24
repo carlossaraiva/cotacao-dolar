@@ -9,7 +9,7 @@ var http = require('http');
 var mongo = require('mongoose');
 var robot = require('./robot.js');
 //mongo
-mongo.connect('mongodb://nirgendwo.ddns.net/cotacaodolar');
+mongo.connect('mongodb://schz:adv4652@ds037837.mongolab.com:37837/heroku_app36146752');
 
 robot.start();
 
