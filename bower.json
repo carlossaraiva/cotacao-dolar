@@ -1,0 +1,17 @@
+{
+  "name": "cotacaodolar",
+  "version": "0.0.0",
+  "authors": [
+    "Carlso Saraiva <carlos.saraiva@msn.com>"
+  ],
+  "description": "A robot example.",
+  "main": "./bin/www",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
