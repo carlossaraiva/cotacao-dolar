@@ -3,16 +3,17 @@ var router = express.Router();
 var Cotacao = require('../models/cotacao.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
 router.get('/json', function(req, res, next){
-	Cotacao.find(function(err, cotacaos){
+	Cotacao.find(function(err, cotacoes){
 		if(!err){
-			res.send(cotacaos);
+			// res.send(cotacaos);
+			res.jsonp(cotacoes);
 		}else{
-			res.send("Not found");
+			res.jsonp([{"Error":"That's fucked up bro..." }]);
 		}
 	});
 });
