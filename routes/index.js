@@ -10,7 +10,6 @@ router.get('/', function (req, res, next) {
 router.get('/json', function(req, res, next){
 	Cotacao.find(function(err, cotacoes){
 		if(!err){
-			// res.send(cotacaos);
 			res.jsonp(cotacoes);
 		}else{
 			res.jsonp([{"Error":"That's fucked up bro..." }]);
