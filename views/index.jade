@@ -2,14 +2,10 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  ul
-    each dolar, i in cotacaoList
-        li  #{dolar.dolar}
-   
-   div.jumbotron
-    h1 Hello word
-    p ...
-    p a.btn.btn-primary.btn-lg Learn More
+  p Um Web Scraper basico.
 
-    img
+  div.cotainer
+    div.row
+      div.col-md-6.col-md-offset-3
+        div.jumbotron
+          p.text-center#dolar $ #{cotacaoLast.dolar}
