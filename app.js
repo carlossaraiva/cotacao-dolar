@@ -21,7 +21,7 @@ app.io = io;
 //Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/angular', express.static(path.join(__dirname, 'public/js/angular')));
-app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
