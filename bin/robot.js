@@ -23,7 +23,6 @@ var robot = function (error, response, html) {
 var job = cron.job('00 00 00 * * *', function () {
     "use strict";
     request(url, robot);
-    console.log("teste");
 });
 
 

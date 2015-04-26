@@ -1,11 +1,16 @@
 extends layout
 
 block content
+  script(src='/js/index.js')
+
   h1= title
   p Um Web Scraper basico.
-
-  div.cotainer
+  div.cotainer(ng-app="App" ng-controller="AppCtrl")
     div.row
       div.col-md-6.col-md-offset-3
         div.jumbotron
-          p.text-center#dolar $ #{cotacaoLast.dolar}
+          p.text-center#dolar {{dolar[dolar.length - 1].dolar}}
+
+    div.cotinaer
+      ul(ng-repeat="dolars in dolar")
+          li {{dolars.dolar}} --- {{dolars.reward}} --- {{dolars.date | moment}}

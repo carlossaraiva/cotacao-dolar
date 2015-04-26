@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	div.container
+		h1 Add dolar
+		form(method="post" action="/cotacao/add")
+			div.form-group
+				label(for="") Dolar			
+				input.form-control(type="text" name="dolar" placeholder="$") 
+			div.form-group
+				label(for="") Date	
+				input.form-control(type="text" name="date" placeholder="date") 
+			input.btn.btn-primary(type="submit" value="Envio") 

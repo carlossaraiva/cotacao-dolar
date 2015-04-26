@@ -8,6 +8,7 @@ var debug = require('debug')('cotacao-dolar:server');
 var http = require('http');
 var mongo = require('mongoose');
 var robot = require('./robot.js');
+var socket = require('./socket.js').socket(app.io);
 //mongo
 mongo.connect('mongodb://schz:adv4652@ds037837.mongolab.com:37837/heroku_app36146752');
 
@@ -23,6 +24,13 @@ app.set('port', port);
  * Create HTTP server.
  */
 var server = http.createServer(app);
+
+/**
+ * Create HTTP server.
+ */
+var io = app.io;
+io.attach(server);
+
 
 /**
  * Listen on provided port, on all network interfaces.
