@@ -1,25 +1,27 @@
 {
-    "name": "cotacao-dolar",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "start": "node ./bin/www"
-    },
-    "engines": {
-        "node": "0.10.x"
-    },
-    "dependencies": {
-        "body-parser": "~1.12.0",
-        "cheerio": "^0.19.0",
-        "cookie-parser": "~1.3.4",
-        "cron": "^1.0.9",
-        "debug": "~2.1.1",
-        "express": "~4.12.2",
-        "jade": "~1.9.2",
-        "mongoose": "^4.0.1",
-        "morgan": "~1.5.1",
-        "request": "^2.55.0",
-        "serve-favicon": "~2.2.0",
-        "socket.io": "^1.3.5"
-    }
+  "name": "cotacao-dolar",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "angular": "^1.3.15",
+    "body-parser": "~1.12.0",
+    "bower": "^1.4.1",
+    "cheerio": "^0.19.0",
+    "cookie-parser": "~1.3.4",
+    "cron": "^1.0.9",
+    "debug": "~2.1.1",
+    "express": "~4.12.2",
+    "jade": "~1.9.2",
+    "mongoose": "^4.0.1",
+    "morgan": "~1.5.1",
+    "request": "^2.55.0",
+    "serve-favicon": "~2.2.0",
+    "socket.io": "^1.3.5"
+  }
 }
