@@ -9,8 +9,9 @@ block content
     div.row
       div.col-md-6.col-md-offset-3
         div.jumbotron
-          p.text-center#dolar {{dolar[dolar.length - 1].dolar}}
+          p.text-center#dolar {{dolar[dolar.length - 1].dolar}} 
+          p.text-left#dateNow {{dateNow | moment: 'format': 'HH:mm:ss'}}
 
     div.cotinaer
       ul(ng-repeat="dolars in dolar")
-          li {{dolars.dolar}} --- {{dolars.date}} --- {{dolars.date | moment}}
+          li {{dolars.dolar}} --- {{dolars.date}} --- {{dolars.date | moment:'utc' | moment: 'fromNow'}}
