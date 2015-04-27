@@ -15,8 +15,16 @@ app.controller("AppCtrl", function ($scope, $http, $timeout) {
         $http.get('/cotacao/json').success(function (data) {
             $scope.dolar = data;
             $scope.dateNow = new Date();
-            $timeout(retrieve, 1000);
+            $timeout(retrieve, 100);
         });
     };
     retrieve();
+
+    $scope.deleteCotacao = function (id) {
+        $http.delete('/cotacao/delete/' + id).success(function (data) {
+            console.log(data);
+        }).error(function (data) {
+            console.log("error " + data);
+        });
+    };
 });

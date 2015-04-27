@@ -2,15 +2,21 @@ var express = require('express');
 var router = express.Router();
 var Cotacao = require('../models/cotacao.js');
 var cotacao;
-console.log(Cotacao);
-
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
     res.render('cotacao');
 });
 
-router.post('/add', function (req, res, next) {
+router.get('/json', function (req, res, next) {
+    Cotacao.find({}).sort({
+        date: -1
+    }).find(function (err, cotacao) {
+        res.json(cotacao);
+    });
+});
+
+router.post('/', function (req, res, next) {
     cotacao = new Cotacao();
     cotacao.dolar = req.body.dolar.replace(',', '.');
     cotacao.date = req.body.date;
@@ -22,13 +28,14 @@ router.post('/add', function (req, res, next) {
     res.redirect("/");
 });
 
-router.get('/json', function (req, res, next) {
-    Cotacao.find({}).sort({
-        date: -1
-    }).find(function (err, cotacao) {
-        res.json(cotacao);
+router.delete('/delete/:id', function (req, res) {
+    Cotacao.remove({
+        _id: req.params.id
+    }, function (err, cotacao) {
+        if (err) {
+            res.send(err);
+        }
     });
 });
-
 
 module.exports = router;

@@ -9,15 +9,16 @@ block content
     div.row
       div.col-md-6.col-md-offset-3
         div.jumbotron
-          p.text-center#dolar {{dolar[0].dolar | currency: "USD$"}} 
+          p.text-center#dolar {{dolar[0].dolar | currency: "$"}} 
           p.text-left#dateNow {{dateNow | moment: 'format': 'HH:mm:ss'}}
 
     div.cotinaer
       ul(ng-repeat="dolars in dolar")
         li 
-          b {{dolars.dolar | currency: "USD$"}} ::: 
-          | {{dolars.date | moment: 'format': 'DD/MM/YYYY'}}             
-          span.glyphicon.glyphicon-remove(aria-hidden="true" ng-hide="dolars.origin == 'robot'")
+          b {{dolars.dolar | currency: "$"}} ::: 
+          | {{dolars.date | moment: 'format': 'DD/MM/YYYY'}} 
+          button.btn.btn-xs(ng-hide="dolars.origin == 'robot'" ng-click="deleteCotacao(dolars._id)")            
+            span.glyphicon.glyphicon-remove(aria-hidden="true")
         i {{dolars.date | moment:'utc' | moment: 'fromNow'}} 
         | from
         u  {{dolars.origin}}

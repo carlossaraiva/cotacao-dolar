@@ -1,3 +1,11 @@
 #dolar{
 	font-size: 60px;
 }
+
+.btn{
+	background: white;
+}
+
+.btn:hover{
+	background:red;
+}
