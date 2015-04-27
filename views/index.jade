@@ -1,24 +1,31 @@
 extends layout
 
 block content
-  script(src='/js/index.js')
+  script(src='/js/angular/controllers/cotacao.js')
 
-  h1= title
-  p Um Web Scraper basico.
+  h1 Cotacao do dolar
+  h3 Web Scraper basico
   div.cotainer(ng-app="App" ng-controller="AppCtrl")
     div.row
-      div.col-md-6.col-md-offset-3
+      div.col-xs-6.col-md-4.col-md-offset-2
         div.jumbotron
           p.text-center#dolar {{dolar[0].dolar | currency: "$"}} 
           p.text-left#dateNow {{dateNow | moment: 'format': 'HH:mm:ss'}}
 
-    div.cotinaer
-      ul(ng-repeat="dolars in dolar")
-        li 
-          b {{dolars.dolar | currency: "$"}} ::: 
-          | {{dolars.date | moment: 'format': 'DD/MM/YYYY'}} 
-          button.btn.btn-xs(ng-hide="dolars.origin == 'robot'" ng-click="deleteCotacao(dolars._id)")            
-            span.glyphicon.glyphicon-remove(aria-hidden="true")
-        i {{dolars.date | moment:'utc' | moment: 'fromNow'}} 
-        | from
-        u  {{dolars.origin}}
+
+      div.col-sm-3
+        form(action="/cotacao/")
+          input(type="submit" value="Adicionar")
+        ul(ng-repeat="dolars in dolar")
+          li
+            h2 {{dolars.dolar | currency: "$"}}
+              button.btn.btn-xs(ng-hide="dolars.origin == 'robot'" ng-click="deleteCotacao(dolars._id)")            
+                span.glyphicon.glyphicon-remove(aria-hidden="true")      
+          | by 
+          u  {{dolars.origin}}
+          br  
+          | {{dolars.date | moment: 'format': 'DD/MM/YYYY'}}            
+          i ({{dolars.date | moment:'utc' | moment: 'fromNow'}})
+  
+        
+        

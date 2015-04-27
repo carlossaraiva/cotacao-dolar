@@ -19,7 +19,7 @@ router.get('/json', function (req, res, next) {
 router.post('/', function (req, res, next) {
     cotacao = new Cotacao();
     cotacao.dolar = req.body.dolar.replace(',', '.');
-    cotacao.date = req.body.date;
+    cotacao.date = new Date();
     cotacao.origin = 'user';
     cotacao.save(function () {
         console.log('Cotação manualmente adicionado: Dolar: ' + cotacao.dolar + ', Data: ' + cotacao.date);
