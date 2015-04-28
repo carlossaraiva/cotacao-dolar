@@ -14,9 +14,12 @@ var robot = function (error, response, html) {
         cotacao = new Cotacao();
         cotacao.dolar = $('.number').html().replace(',', '.');
         cotacao.date = new Date();
+        cotacao.origin = 'robot';
         cotacao.save(function () {
             console.log('Cotação atualizado: Dolar: ' + cotacao.dolar + ', Data: ' + cotacao.date);
         });
+    } else {
+        console.log(response);
     }
 };
 

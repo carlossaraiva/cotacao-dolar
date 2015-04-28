@@ -16,7 +16,7 @@ block content
       div.col-sm-3
         form(action="/cotacao/")
           input(type="submit" value="Adicionar" )
-        ul(ng-repeat="dolars in dolar | limitTo:10" )
+        ul(ng-repeat="dolars in dolar | limitTo:5" )
           li
             h2 {{dolars.dolar | currency: "$"}}
               button.btn.btn-xs(ng-hide="dolars.origin == 'robot'" ng-click="deleteCotacao(dolars._id)")            
