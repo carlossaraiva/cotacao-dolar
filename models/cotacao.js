@@ -4,7 +4,8 @@ var mongo = require('mongoose'),
 var cotacaoSchema = new Schema({
     dolar: Number,
     date: Date,
-    origin: String
+    origin: String,
+    novo: Boolean
 });
 
 module.exports = mongo.model('Cotacao', cotacaoSchema);
