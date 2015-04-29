@@ -1,11 +1,14 @@
 var socket = io();
+
 socket.on('disparo', function (data) {
+    "use strict";
     console.log(data);
 });
 
 var app = angular.module('App', []);
 
 app.filter('moment', function () {
+    "use strict";
     return function (input, momentFn) {
         var args = Array.prototype.slice.call(arguments, 2),
             momentObj = moment(input);
@@ -13,18 +16,14 @@ app.filter('moment', function () {
     };
 });
 
-app.controller("AppCtrl", function ($scope, $http, $timeout) {
+app.controller("AppCtrl", function ($scope, $http, $timeout, $interval) {
+    "use strict";
     var retrieve = function () {
         $http.get('/cotacao/json').success(function (data) {
             $scope.dolar = data;
             $scope.dateNow = new Date();
-            //$timeout(retrieve, 100);
-            console.log('acionado');
         });
     };
-    retrieve();
-
-    socket.on('new', retrieve);
 
     $scope.deleteCotacao = function (id) {
         $http.delete('/cotacao/delete/' + id).success(function (data) {
@@ -33,8 +32,11 @@ app.controller("AppCtrl", function ($scope, $http, $timeout) {
             console.log("error " + data);
         });
     };
-});
 
-app.controller("CotacaoController", function ($scope) {
-    $scope.date = new Date();
+    $interval(function () {
+        $scope.dateNow = new Date();
+    }, 1000);
+
+    socket.on('new', retrieve);
+    retrieve();
 });

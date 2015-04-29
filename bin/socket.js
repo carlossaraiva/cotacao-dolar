@@ -14,6 +14,9 @@ exports.socket = function (ioRef) {
 
 function newValueQuery(socket) {
     "use strict";
+    socks.emit('time', {
+        text: 'time'
+    });
     Cotacao.find({}).sort({
         date: -1
     }).findOne(function (err, cotacao) {

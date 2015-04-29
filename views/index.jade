@@ -9,8 +9,8 @@ block content
     div.row
       div.col-xs-6.col-md-4.col-md-offset-2
         div.jumbotron
-          p.text-center#dolar {{dolar.dolar | currency: "$"}} 
-          p.text-left#dateNow {{dateNow | moment: 'format': 'HH:mm:ss'}}
+          p.text-center#dolar {{dolar[0].dolar | currency: "$"}} 
+          p.text-left#dateNow {{dateNow | moment: 'format': "YYYY-MM-DD HH:mm:ss"}}
 
 
       div.col-sm-3
