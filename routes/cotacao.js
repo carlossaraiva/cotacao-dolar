@@ -12,7 +12,7 @@ router.get('/json', function (req, res, next) {
     Cotacao.find({}).sort({
         date: -1
     }).find(function (err, cotacao) {
-        res.json(cotacao);
+        res.jsonp(cotacao);
     });
 });
 
