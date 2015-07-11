@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/cidades', function (req, res, next) {
   var cities = searchCities(req.body.sigla);
-  res.jsonp(cities);
+  res.json(cities);
 });
 
 //auxiliar functions
