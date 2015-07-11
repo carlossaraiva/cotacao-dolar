@@ -10,7 +10,7 @@ var uf = [];
 })();
 
 router.get('/', function (req, res, next) {
-  res.jsonp(uf);
+  res.json(uf);
 });
 
 router.post('/cidades', function (req, res, next) {
