@@ -1,15 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var estados;
+var uf = [];
 
 (function readJson() {
   var file = require('fs').readFileSync("public/etc/uf.json", "utf8");
   estados = JSON.parse(file);
+  getStates();
 })();
 
 router.get('/', function (req, res, next) {
-  res.jsonp(estados);
-
+  res.jsonp(uf);
 });
 
 router.post('/cidades', function (req, res, next) {
@@ -31,6 +32,13 @@ function searchCities(state) {
     i++;
   }
   return cities;
+}
+
+function getStates() {
+  var temp = estados;
+  for (var i = 0; i < temp.estados.length; i++) {
+    uf.push(temp.estados[i].sigla);
+  }
 }
 
 module.exports = router;
