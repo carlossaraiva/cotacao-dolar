@@ -2,6 +2,29 @@ var Cotacao = require('../models/cotacao.js');
 var io;
 var socks;
 
+function newValueQuery() {
+    "use strict";
+    socks.emit('time', {
+        text: 'time'
+    });
+    Cotacao.find({}).sort({
+        date: -1
+    }).findOne(function (err, cotacao) {
+        if (err) {
+            console.log(err);
+        } else {
+            if (cotacao.novo === true) {
+                socks.emit('new', {
+                    texto: 'novo'
+                });
+                cotacao.novo = false;
+                cotacao.save();
+                console.log('New value detected:  ' + cotacao.dolar + ' ' + cotacao.date);
+            }
+        }
+    });
+}
+
 exports.socket = function (ioRef) {
     "use strict";
     io = ioRef;
@@ -11,23 +34,3 @@ exports.socket = function (ioRef) {
         setInterval(newValueQuery, 1000);
     });
 };
-
-function newValueQuery(socket) {
-    "use strict";
-    socks.emit('time', {
-        text: 'time'
-    });
-    Cotacao.find({}).sort({
-        date: -1
-    }).findOne(function (err, cotacao) {
-        if (cotacao.novo === true) {
-            socks.emit('new', {
-                texto: 'novo'
-            });
-            cotacao.novo = false;
-            cotacao.save();
-            console.log('New value detected:  ' + cotacao.dolar + ' ' + cotacao.date);
-        }
-
-    });
-}
