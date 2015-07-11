@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 //routes
 var routes = require('./routes/index');
 var cotacao = require('./routes/cotacao');
+var uf = require('./routes/uf');
 
 //Express
 var app = express();
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use('/', routes);
 app.use('/cotacao', cotacao);
+app.use('/uf', uf);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -2,14 +2,6 @@ var express = require('express');
 var router = express.Router();
 var Cotacao = require('../models/cotacao.js');
 var cotacao;
-var fs = require('fs');
-var json;
-
-(function readJson() {
-  var file = fs.readFileSync("public/etc/uf.json", "utf8");
-  json = JSON.parse(file);
-})();
-
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -23,12 +15,6 @@ router.get('/json', function (req, res, next) {
     res.jsonp(cotacao);
   });
 });
-
-
-router.get('/uf', function (req, res, next) {
-  res.jsonp(json);
-});
-
 
 router.post('/', function (req, res, next) {
   cotacao = new Cotacao();
